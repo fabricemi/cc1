@@ -12,7 +12,6 @@ def new_collection(request):
             collection = form.save(commit=False)
             collection.date_creation = timezone.now()  
             collection.save()
-            return redirect('about')  
     else:
         form = CollecForm()
     return render(request, 'new_collection.html', {'form': form})
