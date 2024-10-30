@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from collec_management import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('about/', views.about)
+    path('about/', views.about),
+    path('new/', views.new_collection, name='new_collection'),
 ]
