@@ -1,8 +1,8 @@
 from django.urls import path
-from collec_management import views
-from .views import CollecDetailView
+from . import views
+
 
 urlpatterns = [
-    path('collection/<int:pk>/', CollecDetailView.as_view(), name='collec_detail'),
+    path('collection/<int:id>/', views.details_collec, name='collec_detail'),
     path('new/', views.new_collection, name='new_collection')
 ]
