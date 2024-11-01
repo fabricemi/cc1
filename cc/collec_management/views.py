@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .forms import CollecForm  
 from .models import Collec 
+from cc.utils import attr_class
 
 def details_collec(request, id):
     collec_filter=Collec.objects.filter(id=id)
@@ -27,4 +28,6 @@ def new_collection(request):
             collection.save()
     else:
         form = CollecForm()
+    
+    attr_class(form)
     return render(request, 'new_collection.html', {'form': form})

@@ -1,7 +1,19 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
-<h1>{{ collection.title }}</h1>
-<p>Date de création : {{ collection.date }}</p>
-<p>Description : {{ collection.description }}</p>
+
+<div class="container justify-content-center ">
+
+    <div class="card" >
+        <div class="card-body">
+            <h5 class="card-title">{{ collection.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">
+                <p>Date de création : {{ collection.date }}</p>
+            </h6>
+            <p class="card-text">Description : {{ collection.description }}</p>
+
+        </div>
+    </div>
+
+</div>
 {% endblock %}
