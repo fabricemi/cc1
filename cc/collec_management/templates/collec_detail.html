@@ -8,10 +8,9 @@
         <div class="card-body">
             <h5 class="card-title">{{ collection.title }}</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">
-                <p>Date de création : {{ collection.date }}</p>
+                <p>Date de création : {{ collection.date |date:"F j, Y"}}</p>
             </h6>
             <p class="card-text">Description : {{ collection.description }}</p>
-
         </div>
     </div>
 
