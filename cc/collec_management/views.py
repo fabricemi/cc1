@@ -31,3 +31,8 @@ def new_collection(request):
     
     attr_class(form)
     return render(request, 'new_collection.html', {'form': form})
+
+
+def collection_list(request):
+    collections = Collec.objects.all()
+    return render(request, 'collection_list.html', {'collections': collections})
