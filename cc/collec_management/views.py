@@ -36,3 +36,17 @@ def new_collection(request):
 def collection_list(request):
     collections = Collec.objects.all()
     return render(request, 'collection_list.html', {'collections': collections})
+
+
+def delete_collection(request, id):
+    collec_filter = Collec.objects.filter(id=id)
+    if not collec_filter.exists():
+        return render(request, "not_found.html")
+    
+    collection = collec_filter[0]
+    
+    if request.method == 'POST':
+        collection.delete()
+        return redirect('collection_list')
+    
+    return render(request, 'collec_confirm_delete.html', {'collection': collection})

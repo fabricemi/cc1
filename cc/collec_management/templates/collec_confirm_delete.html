@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer la collection</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <div>
+                <h1>Supprimer la collection</h1>
+                <p>Êtes-vous sûr de vouloir supprimer la collection "{{ collection.title }}" ?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit">Confirmer la suppression</button>
+                </form>
+                <a href="{% url 'collection_list' %}">Annuler</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

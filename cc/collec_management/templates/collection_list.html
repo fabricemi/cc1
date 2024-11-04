@@ -23,11 +23,13 @@
             <tr>
                 <td>{{ collection.title }}</td>
                 <td>{{ collection.date |date:"F j, Y" }}</td>
-                <td><a href="{% url 'collec_detail' collection.id %}">Voir les détails</a></td>
+                <td>
+                    <a href="{% url 'collec_detail' collection.id %}">Voir les détails</a>
+                    <a href="{% url 'delete_collection' collection.id %}">Supprimer</a>
+                </td>
             </tr>
             {% endfor %}
         </table>
-
     </div>
 </body>
 
