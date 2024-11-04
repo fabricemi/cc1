@@ -1,26 +1,32 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection</title>
+   
+</head>
+<body>
+    <div class="container justify-content-center ">
 
-{% block content %}
-
-<div class="container justify-content-center ">
-
-    <h1 class="text-center">Liste des Collections</h1>
-    <table class="table table-striped" border="1">
-        <thead class="table-light">
-            <th>Title</th>
-            <th>Date de création</th>
-            <th>Détails</th>
-        </thead>
-        <tbody>
-            {% for collection in collections %}
-            <tr>
-                <td>{{ collection.title }}</td>
-                <td>{{ collection.date |date:"F j, Y" }}</td>
-                <td><a href="{% url 'collec_detail' collection.id %}">Voir les détails</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-</div>
-{% endblock %}
+        <h1 class="text-center">Liste des Collections</h1>
+        <table class="table table-striped" border="1">
+            <thead class="table-light">
+                <th>Title</th>
+                <th>Date de création</th>
+                <th>Détails</th>
+            </thead>
+            <tbody>
+                {% for collection in collections %}
+                <tr>
+                    <td>{{ collection.title }}</td>
+                    <td>{{ collection.date |date:"F j, Y" }}</td>
+                    <td><a href="{% url 'collec_detail' collection.id %}">Voir les détails</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+    </div>
+</body>
+</html>
