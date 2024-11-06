@@ -2,7 +2,13 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .forms import CollecForm  
 from .models import Collec 
-from cc.utils import attr_class
+
+def attr_class(form):
+    """attribut au champ input la casse 'form-control'"""
+    for f in form.fields.keys():
+        form.fields[f].widget.attrs.update({
+            "class":"form-control"
+        })
 
 def details_collec(request, id):
     collec_filter=Collec.objects.filter(id=id)
