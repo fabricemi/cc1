@@ -32,6 +32,7 @@ def new_collection(request):
             collection = form.save(commit=False)
             collection.date_creation = timezone.now()  
             collection.save()
+            return redirect('collection_list')
     else:
         form = CollecForm()
     
@@ -59,13 +60,15 @@ def delete_collection(request, id):
 
 
 def edit_collection(request, id):
-    collection = get_object_or_404(Collec, id=id)
+    collec_filter = Collec.objects.filter(id=id)
+    if not collec_filter.exists():
+        return render(request, "not_found.html")
+    
+    collection = collec_filter[0]
     if request.method == 'POST':
         form = CollecForm(request.POST, instance=collection)
         if form.is_valid():
-            collection = form.save(commit=False)  
-            collection.date_creation = collection.date_creation  
-            collection.save()  
+            form.save()  
             return redirect('collection_list')  
     else:
         form = CollecForm(instance=collection)
