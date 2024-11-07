@@ -1,8 +1,9 @@
 venv/
+cc/venv
 docker-compose.yml
 Dockerfile
 
 cc/db.sqlite3
 cc/collec_management/migrations
-
-
+cc/collec_management/__pycache__
+__pycache__/
