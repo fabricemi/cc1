@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.utils import timezone
 from .forms import CollecForm  
 from .models import Collec 
@@ -56,3 +56,18 @@ def delete_collection(request, id):
         return redirect('collection_list')
     
     return render(request, 'collec_confirm_delete.html', {'collection': collection})
+
+
+def edit_collection(request, id):
+    collection = get_object_or_404(Collec, id=id)
+    if request.method == 'POST':
+        form = CollecForm(request.POST, instance=collection)
+        if form.is_valid():
+            collection = form.save(commit=False)  
+            collection.date_creation = collection.date_creation  
+            collection.save()  
+            return redirect('collection_list')  
+    else:
+        form = CollecForm(instance=collection)
+    return render(request, 'edit_collection.html', {'form': form})
+

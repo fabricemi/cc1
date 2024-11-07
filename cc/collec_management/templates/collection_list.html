@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collection</title>
-
 </head>
-
 <body>
     <div>
-
         <h1>Liste des Collections</h1>
         <table border="1">
             <tr>
                 <th>Title</th>
                 <th>Date de création</th>
                 <th>Détails</th>
+                <th>Actions</th> 
             </tr>
 
             {% for collection in collections %}
             <tr>
                 <td>{{ collection.title }}</td>
-                <td>{{ collection.date |date:"F j, Y" }}</td>
+                <td>{{ collection.date_creation | date:"F j, Y" }}</td> <!-- Affiche la date de création avec le format souhaité -->
                 <td>
                     <a href="{% url 'collec_detail' collection.id %}">Voir les détails</a>
                     <a href="{% url 'delete_collection' collection.id %}">Supprimer</a>
+                </td>
+                <td>
+                    <a href="{% url 'edit_collection' collection.id %}">Modifier</a> <!-- Lien de modification ajouté -->
                 </td>
             </tr>
             {% endfor %}
         </table>
     </div>
 </body>
-
 </html>
