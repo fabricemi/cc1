@@ -1,5 +1,4 @@
 venv/
-cc/venv
 docker-compose.yml
 Dockerfile
 
